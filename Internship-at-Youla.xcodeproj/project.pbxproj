@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		4EAD8A7C2BB3055D004FEA28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8A7B2BB3055D004FEA28 /* AppDelegate.swift */; };
 		4EAD8A7E2BB3055D004FEA28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8A7D2BB3055D004FEA28 /* SceneDelegate.swift */; };
-		4EAD8A802BB3055D004FEA28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8A7F2BB3055D004FEA28 /* ViewController.swift */; };
+		4EAD8A802BB3055D004FEA28 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8A7F2BB3055D004FEA28 /* HomeViewController.swift */; };
 		4EAD8A852BB3055E004FEA28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EAD8A842BB3055E004FEA28 /* Assets.xcassets */; };
 		4EAD8A882BB3055E004FEA28 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4EAD8A872BB3055E004FEA28 /* Base */; };
 		4EAD8A932BB3055E004FEA28 /* Internship_at_YoulaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8A922BB3055E004FEA28 /* Internship_at_YoulaTests.swift */; };
 		4EAD8A9D2BB3055E004FEA28 /* Internship_at_YoulaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8A9C2BB3055E004FEA28 /* Internship_at_YoulaUITests.swift */; };
 		4EAD8A9F2BB3055E004FEA28 /* Internship_at_YoulaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8A9E2BB3055E004FEA28 /* Internship_at_YoulaUITestsLaunchTests.swift */; };
+		4EAD8AB02BB309F5004FEA28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8AAF2BB309F5004FEA28 /* HomeView.swift */; };
+		4EAD8AB22BB30A08004FEA28 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8AB12BB30A08004FEA28 /* HomePresenter.swift */; };
+		4EAD8AB42BB30BDC004FEA28 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8AB32BB30BDC004FEA28 /* Network.swift */; };
+		4EAD8AB72BB31E6C004FEA28 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8AB62BB31E6C004FEA28 /* Services.swift */; };
+		4EAD8AB92BB3218F004FEA28 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8AB82BB3218F004FEA28 /* Errors.swift */; };
+		4EAD8ABB2BB321AE004FEA28 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8ABA2BB321AE004FEA28 /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +44,7 @@
 		4EAD8A782BB3055D004FEA28 /* Internship-at-Youla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Internship-at-Youla.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAD8A7B2BB3055D004FEA28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EAD8A7D2BB3055D004FEA28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4EAD8A7F2BB3055D004FEA28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4EAD8A7F2BB3055D004FEA28 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4EAD8A842BB3055E004FEA28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EAD8A872BB3055E004FEA28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EAD8A892BB3055E004FEA28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +53,12 @@
 		4EAD8A982BB3055E004FEA28 /* Internship-at-YoulaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Internship-at-YoulaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAD8A9C2BB3055E004FEA28 /* Internship_at_YoulaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internship_at_YoulaUITests.swift; sourceTree = "<group>"; };
 		4EAD8A9E2BB3055E004FEA28 /* Internship_at_YoulaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internship_at_YoulaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4EAD8AAF2BB309F5004FEA28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4EAD8AB12BB30A08004FEA28 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		4EAD8AB32BB30BDC004FEA28 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		4EAD8AB62BB31E6C004FEA28 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		4EAD8AB82BB3218F004FEA28 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		4EAD8ABA2BB321AE004FEA28 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +109,10 @@
 		4EAD8A7A2BB3055D004FEA28 /* Internship-at-Youla */ = {
 			isa = PBXGroup;
 			children = (
-				4EAD8A7B2BB3055D004FEA28 /* AppDelegate.swift */,
-				4EAD8A7D2BB3055D004FEA28 /* SceneDelegate.swift */,
-				4EAD8A7F2BB3055D004FEA28 /* ViewController.swift */,
-				4EAD8A842BB3055E004FEA28 /* Assets.xcassets */,
-				4EAD8A862BB3055E004FEA28 /* LaunchScreen.storyboard */,
+				4EAD8AAB2BB3093D004FEA28 /* Resources */,
+				4EAD8AAD2BB30992004FEA28 /* Network */,
+				4EAD8AB52BB31E2E004FEA28 /* Entities */,
+				4EAD8AAC2BB30982004FEA28 /* App */,
 				4EAD8A892BB3055E004FEA28 /* Info.plist */,
 			);
 			path = "Internship-at-Youla";
@@ -122,6 +133,53 @@
 				4EAD8A9E2BB3055E004FEA28 /* Internship_at_YoulaUITestsLaunchTests.swift */,
 			);
 			path = "Internship-at-YoulaUITests";
+			sourceTree = "<group>";
+		};
+		4EAD8AAB2BB3093D004FEA28 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4EAD8A862BB3055E004FEA28 /* LaunchScreen.storyboard */,
+				4EAD8A842BB3055E004FEA28 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4EAD8AAC2BB30982004FEA28 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4EAD8AAE2BB309C6004FEA28 /* Home */,
+				4EAD8A7B2BB3055D004FEA28 /* AppDelegate.swift */,
+				4EAD8A7D2BB3055D004FEA28 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4EAD8AAD2BB30992004FEA28 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4EAD8AB32BB30BDC004FEA28 /* Network.swift */,
+				4EAD8AB82BB3218F004FEA28 /* Errors.swift */,
+				4EAD8ABA2BB321AE004FEA28 /* Response.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4EAD8AAE2BB309C6004FEA28 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4EAD8AAF2BB309F5004FEA28 /* HomeView.swift */,
+				4EAD8A7F2BB3055D004FEA28 /* HomeViewController.swift */,
+				4EAD8AB12BB30A08004FEA28 /* HomePresenter.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4EAD8AB52BB31E2E004FEA28 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4EAD8AB62BB31E6C004FEA28 /* Services.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +312,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EAD8A802BB3055D004FEA28 /* ViewController.swift in Sources */,
+				4EAD8AB72BB31E6C004FEA28 /* Services.swift in Sources */,
+				4EAD8AB02BB309F5004FEA28 /* HomeView.swift in Sources */,
+				4EAD8A802BB3055D004FEA28 /* HomeViewController.swift in Sources */,
+				4EAD8AB42BB30BDC004FEA28 /* Network.swift in Sources */,
+				4EAD8ABB2BB321AE004FEA28 /* Response.swift in Sources */,
+				4EAD8AB92BB3218F004FEA28 /* Errors.swift in Sources */,
 				4EAD8A7C2BB3055D004FEA28 /* AppDelegate.swift in Sources */,
 				4EAD8A7E2BB3055D004FEA28 /* SceneDelegate.swift in Sources */,
+				4EAD8AB22BB30A08004FEA28 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
