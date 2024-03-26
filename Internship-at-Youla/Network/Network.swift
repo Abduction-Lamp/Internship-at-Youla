@@ -22,6 +22,7 @@ final class Network {
         if let url = URL(string: urlString) {
             
             
+            
             fetch(url: url) { result in
                 switch (result) {
                 case .success(let response):
@@ -36,10 +37,16 @@ final class Network {
             }
             
             
+            
+            
         } else {
             handler(.failure(NetworkErrors(urlString, "Couldn't get the URL")))
         }
     }
+    
+    
+    
+    
     
     
     private func fetch(url: URL, _ handler: @escaping (Result<ServicesResponse, NetworkErrors>) -> Void) {
