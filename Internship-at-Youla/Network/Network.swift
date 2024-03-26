@@ -5,7 +5,7 @@
 //  Created by Vladimir Lesnykh on 26.03.2024.
 //
 
-import Foundation
+import UIKit
 
 final class Network {
     
@@ -25,14 +25,15 @@ final class Network {
             
             fetch(url: url) { result in
                 switch (result) {
-                case .success(let response):
-                    if (200...299).contains(response.status) {
-                        handler(.success(response.body.services))
-                    } else {
-                        handler(.failure(NetworkErrors(url.absoluteString, "Data response status code \(response.status)")))
-                    }
-                case .failure(let error):
+                case let .failure(error):
                     handler(.failure(error))
+                case let .success(data):
+                    do {
+                        let result = try JSONDecoder().decode(ServicesResponse.self, from: data)
+                        handler(.success(result.body.services))
+                    } catch {
+                        handler(.failure(NetworkErrors(url.absoluteString, "", error)))
+                    }
                 }
             }
             
@@ -46,10 +47,30 @@ final class Network {
     
     
     
+    func getImage(_ urlString: String, _ handler: @escaping (Result<UIImage, NetworkErrors>) -> Void) {
+        if let url = URL(string: urlString) {
+            
+            fetch(url: url) { result in
+                switch (result) {
+                case let .failure(error):
+                    handler(.failure(error))
+                case let .success(data):
+                    if let image = UIImage(data: data) {
+                        handler(.success(image))
+                    } else {
+                        handler(.failure(NetworkErrors(url.absoluteString, "Couldn't init Image from Data")))
+                    }
+                }
+            }
+            
+            
+        } else {
+            handler(.failure(NetworkErrors(urlString, "Couldn't get the URL")))
+        }
+    }
     
     
-    
-    private func fetch(url: URL, _ handler: @escaping (Result<ServicesResponse, NetworkErrors>) -> Void) {
+    private func fetch(url: URL, _ handler: @escaping (Result<Data, NetworkErrors>) -> Void) {
         session.dataTask(with: url) { data, response, error in
             if let error = error {
                 handler(.failure(NetworkErrors(url.absoluteString, "", error)))
@@ -65,12 +86,13 @@ final class Network {
                         return
                     }
                     
-                    do {
-                        let result = try JSONDecoder().decode(ServicesResponse.self, from: data)
-                        handler(.success(result))
-                    } catch {
-                        handler(.failure(NetworkErrors(url.absoluteString, "", error)))
-                    }
+                    handler(.success(data))
+//                    do {
+//                        let result = try JSONDecoder().decode(ServicesResponse.self, from: data)
+//                        handler(.success(result))
+//                    } catch {
+//                        handler(.failure(NetworkErrors(url.absoluteString, "", error)))
+//                    }
                 } else {
                     handler(.failure(NetworkErrors(url.absoluteString, "Response field is missing in the response")))
                 }
