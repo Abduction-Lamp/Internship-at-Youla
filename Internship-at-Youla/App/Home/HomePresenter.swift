@@ -14,7 +14,7 @@ protocol HomePresentable: AnyObject {
     
     init(
         _ viewController: HomeViewControllerDisplayable,
-        network:          Network,
+        network:          NetworkProtocol,
         cache:            ImageCacheProtocol
     )
     
@@ -28,7 +28,7 @@ final class HomePresenter: HomePresentable {
     
     private weak var viewController: HomeViewControllerDisplayable?
     
-    private let network: Network
+    private let network: NetworkProtocol
     private let cache:   ImageCacheProtocol
     
     private var services: [Services] = []
@@ -39,7 +39,7 @@ final class HomePresenter: HomePresentable {
     
     init(
         _ viewController: HomeViewControllerDisplayable,
-        network: Network,
+        network: NetworkProtocol,
         cache: ImageCacheProtocol = ImageCache.shared
     ) {
         self.viewController = viewController

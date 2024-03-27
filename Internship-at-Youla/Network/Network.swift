@@ -7,7 +7,14 @@
 
 import UIKit
 
-final class Network {
+protocol NetworkProtocol: AnyObject {
+    
+    func getServices(_ handler: @escaping (Result<[Services], NetworkErrors>) -> Void)
+    func getImage(_ urlString: String, _ handler: @escaping (Result<UIImage, NetworkErrors>) -> Void)
+}
+
+
+final class Network: NetworkProtocol {
     
     private let session: URLSession
 
