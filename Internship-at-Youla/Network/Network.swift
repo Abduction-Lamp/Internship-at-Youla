@@ -10,8 +10,7 @@ import UIKit
 final class Network {
     
     private let session: URLSession
-//    private let queue = DispatchQueue(label: "ru.Lesnykh.Vladimir.Network", qos: .userInitiated, attributes: .concurrent)
-    
+
     init(session: URLSession = URLSession.shared) {
         self.session = session
     }

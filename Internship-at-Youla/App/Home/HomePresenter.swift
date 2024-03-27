@@ -19,8 +19,8 @@ protocol HomePresentable: AnyObject {
     )
     
     func fetch()
-    
     func getItem(for row: Int) -> (name: String, description: String, icon: UIImage?)?
+    func open(for row: Int)
 }
 
 
@@ -36,6 +36,7 @@ final class HomePresenter: HomePresentable {
         services.count
     }
     
+    
     init(
         _ viewController: HomeViewControllerDisplayable,
         network: Network,
@@ -45,7 +46,6 @@ final class HomePresenter: HomePresentable {
         self.network = network
         self.cache = cache
     }
-    
     
     
     func fetch() {
@@ -85,5 +85,12 @@ final class HomePresenter: HomePresentable {
         }
         
         return (name: services[row].name,  description: services[row].description, icon: icon)
+    }
+    
+    func open(for row: Int) {
+        guard (0 ... (services.count - 1)).contains(row) else { return }
+        if let serviceURL = URL(string: services[row].link) {
+            UIApplication.shared.open(serviceURL, options: [:], completionHandler: nil)
+        }
     }
 }

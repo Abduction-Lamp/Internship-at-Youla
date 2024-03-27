@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 protocol HomeViewControllerDisplayable: AnyObject {
     
     var presenter: HomePresentable? { get set }
@@ -17,9 +15,7 @@ protocol HomeViewControllerDisplayable: AnyObject {
     func display(for item: Int)
     
 }
-
 extension HomeViewControllerDisplayable where Self: UIViewController {}
-
 
 
 
@@ -40,7 +36,6 @@ final class HomeViewController: UIViewController, HomeViewControllerDisplayable 
         
         homeView.table.delegate = self
         homeView.table.dataSource = self
-        
     }
     
     override func viewDidLoad() {
@@ -62,6 +57,7 @@ final class HomeViewController: UIViewController, HomeViewControllerDisplayable 
         super.viewWillAppear(animated)
         presenter?.fetch()
     }
+    
     
     func display() {
         homeView.table.reloadData()
@@ -103,5 +99,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
     
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.open(for: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
