@@ -22,6 +22,7 @@
 		4EAD8AB92BB3218F004FEA28 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8AB82BB3218F004FEA28 /* Errors.swift */; };
 		4EAD8ABB2BB321AE004FEA28 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8ABA2BB321AE004FEA28 /* Response.swift */; };
 		4EAD8ABF2BB35B94004FEA28 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8ABE2BB35B94004FEA28 /* ImageCache.swift */; };
+		4EAD8AC42BB43E47004FEA28 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD8AC32BB43E47004FEA28 /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		4EAD8AB82BB3218F004FEA28 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		4EAD8ABA2BB321AE004FEA28 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		4EAD8ABE2BB35B94004FEA28 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		4EAD8AC32BB43E47004FEA28 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				4EAD8AAB2BB3093D004FEA28 /* Resources */,
-				4EAD8AAD2BB30992004FEA28 /* Network */,
-				4EAD8ABC2BB35B67004FEA28 /* ImageCache */,
+				4EAD8AC12BB43DEA004FEA28 /* Core */,
+				4EAD8AC02BB43DDE004FEA28 /* Services */,
 				4EAD8AB52BB31E2E004FEA28 /* Entities */,
 				4EAD8AAC2BB30982004FEA28 /* App */,
 				4EAD8A892BB3055E004FEA28 /* Info.plist */,
@@ -191,6 +193,31 @@
 				4EAD8ABE2BB35B94004FEA28 /* ImageCache.swift */,
 			);
 			path = ImageCache;
+			sourceTree = "<group>";
+		};
+		4EAD8AC02BB43DDE004FEA28 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4EAD8AAD2BB30992004FEA28 /* Network */,
+				4EAD8ABC2BB35B67004FEA28 /* ImageCache */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4EAD8AC12BB43DEA004FEA28 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4EAD8AC22BB43E14004FEA28 /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4EAD8AC22BB43E14004FEA28 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4EAD8AC32BB43E47004FEA28 /* UIViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +353,7 @@
 				4EAD8ABF2BB35B94004FEA28 /* ImageCache.swift in Sources */,
 				4EAD8AB72BB31E6C004FEA28 /* Services.swift in Sources */,
 				4EAD8AB02BB309F5004FEA28 /* HomeView.swift in Sources */,
+				4EAD8AC42BB43E47004FEA28 /* UIViewController.swift in Sources */,
 				4EAD8A802BB3055D004FEA28 /* HomeViewController.swift in Sources */,
 				4EAD8AB42BB30BDC004FEA28 /* Network.swift in Sources */,
 				4EAD8ABB2BB321AE004FEA28 /* Response.swift in Sources */,

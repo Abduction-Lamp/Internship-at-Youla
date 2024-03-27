@@ -13,6 +13,7 @@ protocol HomeViewControllerDisplayable: AnyObject {
     
     func display()
     func display(for item: Int)
+    func alert(title: String, message: String)
     
 }
 extension HomeViewControllerDisplayable where Self: UIViewController {}
@@ -70,6 +71,15 @@ final class HomeViewController: UIViewController, HomeViewControllerDisplayable 
     
     func display(for item: Int) {
         homeView.table.reloadRows(at: [IndexPath(row: item, section: 0)], with: .automatic)
+    }
+    
+    func alert(title: String, message: String)  {
+        alert(title: title, message: message, actionTitle: "Закрыть") { [weak self] in
+            guard let self = self else { return }
+            if self.homeView.refreshControl.isRefreshing {
+                self.homeView.refreshControl.endRefreshing()
+            }
+        }
     }
 }
 

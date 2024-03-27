@@ -60,7 +60,10 @@ final class HomePresenter: HomePresentable {
                     self.viewController?.display()
                 }
             case let .failure(error):
-                print(error.message)
+                DispatchQueue.main.async {
+                    self.viewController?.alert(title:   "Network Fail",
+                                               message: "\(error.url ?? "")\n\(error.message)\n\(error.localizedDescription)")
+                }
             }
         }
     }
