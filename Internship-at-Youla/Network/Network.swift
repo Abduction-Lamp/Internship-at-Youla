@@ -10,8 +10,7 @@ import UIKit
 final class Network {
     
     private let session: URLSession
-    private let queue = DispatchQueue(label: "ru.Lesnykh.Vladimir.Network", qos: .userInitiated, attributes: .concurrent)
-    
+//    private let queue = DispatchQueue(label: "ru.Lesnykh.Vladimir.Network", qos: .userInitiated, attributes: .concurrent)
     
     init(session: URLSession = URLSession.shared) {
         self.session = session
@@ -20,9 +19,6 @@ final class Network {
     func getServices(_ handler: @escaping (Result<[Services], NetworkErrors>) -> Void) {
         let urlString = "https://publicstorage.hb.bizmrg.com/sirius/result.json"
         if let url = URL(string: urlString) {
-            
-            
-            
             fetch(url: url) { result in
                 switch (result) {
                 case let .failure(error):
@@ -36,20 +32,13 @@ final class Network {
                     }
                 }
             }
-            
-            
-            
-            
         } else {
             handler(.failure(NetworkErrors(urlString, "Couldn't get the URL")))
         }
     }
     
-    
-    
     func getImage(_ urlString: String, _ handler: @escaping (Result<UIImage, NetworkErrors>) -> Void) {
         if let url = URL(string: urlString) {
-            
             fetch(url: url) { result in
                 switch (result) {
                 case let .failure(error):
@@ -62,8 +51,6 @@ final class Network {
                     }
                 }
             }
-            
-            
         } else {
             handler(.failure(NetworkErrors(urlString, "Couldn't get the URL")))
         }
@@ -80,19 +67,11 @@ final class Network {
                         handler(.failure(NetworkErrors(url.absoluteString, "http response status code: \(httpURLResponse.statusCode)")))
                         return
                     }
-                    
                     guard let data = data else {
                         handler(.failure(NetworkErrors(url.absoluteString, "Data field is missing in the response")))
                         return
                     }
-                    
                     handler(.success(data))
-//                    do {
-//                        let result = try JSONDecoder().decode(ServicesResponse.self, from: data)
-//                        handler(.success(result))
-//                    } catch {
-//                        handler(.failure(NetworkErrors(url.absoluteString, "", error)))
-//                    }
                 } else {
                     handler(.failure(NetworkErrors(url.absoluteString, "Response field is missing in the response")))
                 }

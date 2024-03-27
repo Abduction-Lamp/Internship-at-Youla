@@ -7,19 +7,26 @@
 
 import UIKit
 
-final class ImageCache {
+protocol ImageCacheProtocol: AnyObject {
+    
+    func add(url key: String, image value: UIImage)
+    func getImage(url key: String) -> UIImage?
+}
+
+
+final class ImageCache: ImageCacheProtocol {
     
     static let shared = ImageCache()
     private init() {}
     
     private let cache = NSCache<NSString, UIImage>()
 
-    public func getImage(url key: String) -> UIImage? {
+    func getImage(url key: String) -> UIImage? {
         guard let image = cache.object(forKey: key as NSString) else { return nil }
         return image
     }
     
-    public func add(url key: String, image value: UIImage) {
+    func add(url key: String, image value: UIImage) {
         cache.setObject(value, forKey: key as NSString)
     }
 }

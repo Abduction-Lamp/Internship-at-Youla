@@ -7,17 +7,34 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
 
+
+protocol HomeViewControllerDisplayable: AnyObject {
+    
+    var presenter: HomePresentable? { get set }
+    
+    func display()
+    func display(for item: Int)
+    
+}
+
+extension HomeViewControllerDisplayable where Self: UIViewController {}
+
+
+
+
+final class HomeViewController: UIViewController, HomeViewControllerDisplayable {
+
+    var presenter: HomePresentable?
+    
     public var homeView: HomeView {
         guard let view = self.view as? HomeView else {
             return HomeView(frame: self.view.frame)
         }
         return view
     }
-    
-    
-    
+
+
     override func loadView() {
         view = HomeView()
         
@@ -29,21 +46,29 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Сервисы"
         homeView.backgroundColor = .black
         
-        title = "Сервисы"
-        
-        let network = Network()
-        network.getServices { result in
-            switch(result) {
-            case .failure(let error):
-                print(error.localizedDescription)
-                
-            case .success(let data):
-                print("!ok = \(data.count)")
-            }
-        }
-        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .black
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.fetch()
+    }
+    
+    func display() {
+        homeView.table.reloadData()
+    }
+    
+    func display(for item: Int) {
+        homeView.table.reloadRows(at: [IndexPath(row: item, section: 0)], with: .automatic)
     }
 }
 
@@ -51,28 +76,32 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        presenter?.numberOfRowsInSection ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)") else {
-            return UITableViewCell()
-        }
+        guard 
+            let item = presenter?.getItem(for: indexPath.row),
+            let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)")
+        else { return UITableViewCell() }
         
         var content = UIListContentConfiguration.subtitleCell()
         content.directionalLayoutMargins = .init(top: 8, leading: 8, bottom: 8, trailing: 8)
         
-        content.text = "ВКонтакте"
+        content.text = item.name
         content.textProperties.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
-        content.secondaryText = "checkmark circle fillc heckmark circle fill checkmark circle fill checkmark circle fill checkmark circle fill"
+        content.textProperties.color = .white
         
+        content.secondaryText = item.description
+        content.secondaryTextProperties.color = .white
         
-        content.image = UIImage(systemName: "checkmark.circle.fill")
-        content.imageProperties.tintColor = .systemGreen
+        content.image = item.icon
+        content.imageProperties.maximumSize = .init(width: 50, height: 50)
         
         cell.contentConfiguration = content
+        cell.backgroundColor = .black
         cell.accessoryType = .disclosureIndicator
+    
         return cell
     }
-
 }
