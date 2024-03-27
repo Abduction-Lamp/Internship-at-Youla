@@ -17,6 +17,13 @@ final class HomeView: UIView {
         return table
     }()
     
+    private(set) var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.tintColor = .white
+        return refresh
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -29,8 +36,10 @@ final class HomeView: UIView {
     
     private func buildUI() {
         table.backgroundColor = .black
+        table.addSubview(refreshControl)
         
         addSubview(table)
+        
         configureConstraints()
     }
     

@@ -36,6 +36,8 @@ final class HomeViewController: UIViewController, HomeViewControllerDisplayable 
         
         homeView.table.delegate = self
         homeView.table.dataSource = self
+        
+        homeView.refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
     }
     
     override func viewDidLoad() {
@@ -60,6 +62,9 @@ final class HomeViewController: UIViewController, HomeViewControllerDisplayable 
     
     
     func display() {
+        if homeView.refreshControl.isRefreshing {
+            homeView.refreshControl.endRefreshing()
+        }
         homeView.table.reloadData()
     }
     
@@ -104,5 +109,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.open(for: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+extension HomeViewController {
+    
+    @objc
+    private func refresh(_ sender: UIRefreshControl) {
+        homeView.refreshControl.beginRefreshing()
+        presenter?.fetch()
     }
 }
